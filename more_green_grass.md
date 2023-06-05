@@ -12,7 +12,7 @@ Given the greenness of n gardens, please calculate the "greenness on the other s
 ## Ans
 ```
     function main($lines) {
-        $output = array_map('intval', explode(" ", $lines));
+        $output = array_map('intval', explode(" ", $lines[1]));
         sort($output);
         $last = $output[count($output) - 1];
         $nearLast = $output[count($output) - 2];
