@@ -11,19 +11,21 @@ Given the greenness of n gardens, please calculate the "greenness on the other s
 
 ## Ans
 ```
-    function main($lines) {
-    $input = array_map('intval', explode(" ", $lines[1]));
-    sort($input);
-    $mostMaxGrass = $input[count($input) - 1];
-    $secondMaxGrass = $input[count($input) - 2];
-    $result = [];
-    $counter = 1;
+function main($grass) {
+  $input = $gardenlist = array_map('intval', explode(" ", $grass[1]));
+  rsort($input);
+  $result = array_fill(0, (count($input)), $input[0]);
+  $result[array_search($input[0], $gardenlist)] = $input[1];
+  echo implode(PHP_EOL, $result);
+}
 
-    while ($counter <= count($input)) {
-        array_push($result, $mostMaxGrass);
-        $counter++;
-    }
-    if($secondMaxGrass != $mostMaxGrass) $result[count($result) - 1] = $secondMaxGrass;
-    echo implode(PHP_EOL, $result);
-    }
+$array = array();
+while (true) {
+  $stdin = fgets(STDIN);
+  if ($stdin == "") {
+    break;
+  }
+  $array[] = rtrim($stdin);
+}
+main($array);
 ```
